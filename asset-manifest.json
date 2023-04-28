@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/wonghin.github.io/static/css/main.6418226e.css",
+    "main.js": "/wonghin.github.io/static/js/main.b52a79d4.js",
+    "static/js/787.7fd42aa5.chunk.js": "/wonghin.github.io/static/js/787.7fd42aa5.chunk.js",
+    "static/media/cat.jpg": "/wonghin.github.io/static/media/cat.dab163f3844057e6181b.jpg",
+    "static/media/icon.jpg": "/wonghin.github.io/static/media/icon.dba2efe8778321745187.jpg",
+    "static/media/cat2.jpg": "/wonghin.github.io/static/media/cat2.782a953a5e2683a07895.jpg",
+    "static/media/cat1.jpg": "/wonghin.github.io/static/media/cat1.e3f8964ac5ecae042184.jpg",
+    "static/media/cat3.jpg": "/wonghin.github.io/static/media/cat3.35408cddc88aadc46aaa.jpg",
+    "static/media/cat0.jpg": "/wonghin.github.io/static/media/cat0.1a6776172fda9883392e.jpg",
+    "index.html": "/wonghin.github.io/index.html",
+    "main.6418226e.css.map": "/wonghin.github.io/static/css/main.6418226e.css.map",
+    "main.b52a79d4.js.map": "/wonghin.github.io/static/js/main.b52a79d4.js.map",
+    "787.7fd42aa5.chunk.js.map": "/wonghin.github.io/static/js/787.7fd42aa5.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6418226e.css",
+    "static/js/main.b52a79d4.js"
+  ]
+}
