@@ -1,7 +1,7 @@
 {
-  "name": "andyhk.github.io",
+  "name": "git-page",
   "version": "0.2.0",
-  "homepage": "https://wonghin.github.io/wonghin.github.io",
+  "homepage": "https://wonghin.github.io/git-page",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.6",
