@@ -1,0 +1,61 @@
+.card {
+    /* position: relative; */
+    width: 35vw;
+    height: 35vw;
+    border-radius: 0.6vw;
+    box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.5s, opacity 0.5s;
+    will-change: transform;
+    border: 0.6vw solid white;
+    cursor: pointer;
+    overflow: hidden;
+    touch-action: none;
+}
+
+.card:hover {
+    box-shadow: 0px 30px 100px -10px rgba(0, 0, 0, 0.4);
+}
+
+.card>div {
+    will-change: transform;
+    height: 100%;
+    margin: 0vw 0;
+}
+
+.card>div>* {
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    margin: 0vw 0;
+}
+
+.phoneSizeCard {
+    /* position: relative; */
+    width: 80vw;
+    height: 80vw;
+    border-radius: 0.6vw;
+    box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.5s, opacity 0.5s;
+    will-change: transform;
+    border: 0.6vw solid white;
+    cursor: pointer;
+    overflow: hidden;
+    touch-action: none;
+}
+
+.phoneSizeCard:hover {
+    box-shadow: 0px 30px 100px -10px rgba(0, 0, 0, 0.4);
+}
+
+.phoneSizeCard>div {
+    will-change: transform;
+    height: 100%;
+    margin: 0vw 0;
+}
+
+.phoneSizeCard>div>* {
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    margin: 0vw 0;
+}
