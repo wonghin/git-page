@@ -224,7 +224,7 @@ export default function LayoutScreen() {
                                         onClick={() => {
                                             scrollIntoView3();
                                             setOpened(false)
-                                            navigate('/home')
+                                            // navigate('/home')
                                         }}
                                     >
                                         Home
@@ -237,7 +237,7 @@ export default function LayoutScreen() {
                                         onClick={() => {
                                             scrollAbout();
                                             setOpened(false)
-                                            navigate('/about')
+                                            // navigate('/about')
 
                                         }}
                                     >
@@ -249,7 +249,7 @@ export default function LayoutScreen() {
                                         onClick={() => {
                                             scrollIntoView();
                                             setOpened(false)
-                                            navigate('/employment')
+                                            // navigate('/employment')
 
                                         }}
                                     >
@@ -261,7 +261,7 @@ export default function LayoutScreen() {
                                         onClick={() => {
                                             scrollIntoView2();
                                             setOpened(false)
-                                            navigate('/education')
+                                            // navigate('/education')
 
                                         }}
                                     >

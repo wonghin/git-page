@@ -11,7 +11,7 @@ import { Education } from "./screens/Education";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/git-page",
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
