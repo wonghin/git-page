@@ -1,10 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import {
     AppShell,
     Navbar,
     Header,
-    Footer,
-    Aside,
     Text,
     MediaQuery,
     Burger,
@@ -12,59 +10,43 @@ import {
     ActionIcon,
     Stack,
     Button,
-    Transition,
-    Grid,
-    Box,
     Group,
     Switch,
     useMantineColorScheme,
     Flex,
-    ThemeIcon,
-    Image,
     Avatar,
     Card,
     ScrollArea,
-    Center,
-    Paper,
     Anchor,
-    Divider,
-    TypographyStylesProvider,
 } from "@mantine/core";
-import { Content1 } from "./Contents/Content1";
 import {
     IconMoonStars,
-    IconPhoto,
-    IconSettings,
     IconSun,
 } from "@tabler/icons-react";
 import {
     useDisclosure,
     useElementSize,
     useMediaQuery,
-    usePrevious,
     useScrollIntoView,
-    useViewportSize,
-    useWindowScroll,
+
 } from "@mantine/hooks";
 import {
-    BrandFacebook,
     BrandGithub,
     BrandInstagram,
     BrandLinkedin,
-    Container,
-    Home2,
+
 } from "tabler-icons-react";
 import icon from "../assets/icon.jpg";
-import TestParallex from "./Contents/Test/TestParallex";
-import TestScroll2 from "./Contents/Test/TestScroll2";
-import TestFlip from "./Contents/Test/TestReactSpring/TestFlip";
-import { Content2, useInViewStore } from "./Contents/Content2";
-import { IconButton } from "../components/IconButton";
+import { Content2 } from "./Contents/Content2";
 import { useScrollLock } from '@mantine/hooks';
 import { useNavigate } from "react-router-dom";
 import { create } from "zustand";
 import { useInView } from "framer-motion";
 import { ImageModal } from "../components/ImageModal";
+import { IconButton } from "../components/IconButton";
+import { HoverEnlarge } from "../components/Animated/HoverEnlarge";
+import { NavBar } from "./NavBar";
+import { HeaderComponent } from "./HeaderComponent";
 export const useRefStore = create((set) => ({
     targetRef: {},
     setTargetRef: (ref) => set({ targetRef: ref }),
@@ -93,7 +75,6 @@ const isPhoneSize = (matches, a, b) => {
 
 
 export default function LayoutScreen() {
-    const navigate = useNavigate();
     const theme = useMantineTheme();
     const [opened, setOpened] = useState(false);
 
@@ -118,7 +99,6 @@ export default function LayoutScreen() {
     useScrollLock(opened)
     const matches = useMediaQuery(`(min-width: ${theme.breakpoints.lg}px)`);
     const handlers = useDisclosure(false);
-    const { ref, width, height } = useElementSize();
     const smMatches = useMediaQuery(`(min-width: ${theme.breakpoints.sm}px)`);
 
 
@@ -136,193 +116,174 @@ export default function LayoutScreen() {
             // asideOffsetBreakpoint="sm"
             // layout="alt"
             navbar={
+                <NavBar opened={opened} smMatches={smMatches} handlers={handlers} colorScheme={colorScheme} iconSize={iconSize} matches={matches}
+                    isInViewHome={isInViewHome} isInViewAbout={isInViewAbout} scrollIntoView3={scrollIntoView3} setOpened={setOpened} scrollAbout={scrollAbout}
+                    isInViewEmployment={isInViewEmployment} colorChange={colorChange} isInViewEducation={isInViewEducation} scrollIntoView={scrollIntoView} scrollIntoView2={scrollIntoView2} />
+                // <Navbar
+                //     hiddenBreakpoint="sm"
+                //     hidden={!opened}
+                //     width={{ sm: 250, lg: 250 }}
+                //     h={'100vh'}
 
-                <Navbar
-                    hiddenBreakpoint="sm"
-                    hidden={!opened}
-                    width={{ sm: 250, lg: 250 }}
-                    h={'100vh'}
+                // >
+                //     <ScrollArea h={'100vh'} w={smMatches ? 250 : 'auto'}>
+                //         <Navbar.Section w={{ sm: 250, lg: 250 }}>
+                //             {/* Top */}
+                //             <Stack align={"center"} mt={30} >
+                //                 <Card radius={1000} shadow={"lg"} sx={{ alignItems: "center" }}>
+                //                     <Avatar
+                //                         src={icon}
+                //                         radius={1000}
+                //                         size={150}
+                //                         alt="Icon"
+                //                         sx={{ marginBottom: 0 }}
+                //                         onClick={handlers[1].open}
+                //                     />
+                //                     <ImageModal opened={handlers[0]} open={handlers[1].open} close={handlers[1].close} image={icon} index={undefined} />
 
-                >
-                    <ScrollArea h={'100vh'} w={smMatches ? 250 : 'auto'}>
-                        <Navbar.Section w={{ sm: 250, lg: 250 }}>
-                            {/* Top */}
-                            <Stack align={"center"} mt={30} >
-                                <Card radius={1000} shadow={"lg"} sx={{ alignItems: "center" }}>
-                                    <Avatar
-                                        src={icon}
-                                        radius={1000}
-                                        size={150}
-                                        alt="Icon"
-                                        sx={{ marginBottom: 0 }}
-                                        onClick={handlers[1].open}
-                                    />
-                                    <ImageModal opened={handlers[0]} open={handlers[1].open} close={handlers[1].close} image={icon} index={undefined} />
+                //                 </Card>
 
-                                </Card>
+                //                 <Text fw={400} fz={20}>
+                //                     Andy Wong
+                //                 </Text>
 
-                                <Text fw={400} fz={20}>
-                                    Andy Wong
-                                </Text>
+                //                 <Flex
+                //                     // w={{ sm: 200, lg: 250 }}
+                //                     mb={40}
+                //                     gap={4}
+                //                     justify={"center"}
+                //                 >
+                //                     <HoverEnlarge>
+                //                         <IconButton hef={"https://www.instagram.com/car_dryer/"}
+                //                             colorScheme={colorScheme} iconSize={iconSize} colorChange={colorChange} Icon={BrandInstagram} />
+                //                     </HoverEnlarge>
+                //                     <HoverEnlarge>
+                //                         <IconButton hef={"https://www.linkedin.com/in/andy-wong-3378ab1b9/?original_referer="}
+                //                             colorScheme={colorScheme} iconSize={iconSize} colorChange={colorChange} Icon={BrandLinkedin} />
+                //                     </HoverEnlarge>
+                //                     <HoverEnlarge>
+                //                         <IconButton hef={"https://github.com/wonghin/"}
+                //                             colorScheme={colorScheme} iconSize={iconSize} colorChange={colorChange} Icon={BrandGithub} />
+                //                     </HoverEnlarge>
+                //                 </Flex>
+                //             </Stack>
+                //         </Navbar.Section>
 
-                                <Flex
-                                    w={{ sm: 200, lg: 250 }}
-                                    mb={40}
-                                    sx={{ justifyItems: "space-between" }}
-                                    justify={"center"}
-                                >
-                                    {/* <IconButton IconComponent={<BrandInstagram
-                                    size={iconSize}
-                                    strokeWidth={2}
-                                    color={colorChange}
-                                />} /> */}
+                //         <Navbar.Section grow component={ScrollArea}>
+                //             <Stack
+                //                 mx={"md"}
 
-                                    <Anchor href="https://www.instagram.com/car_dryer/" target="_blank" >
-                                        <ActionIcon variant='subtle' >
+                //             >
+                //                 <Stack>
+                //                     <Button
+                //                         variant={(isPhoneSize(matches, isInViewHome, isInViewAbout))}
+                //                         color={colorScheme === "dark" ? "gray" : "dark"}
+                //                         onClick={() => {
+                //                             scrollIntoView3();
+                //                             setOpened(false)
+                //                             // navigate('/home')
+                //                         }}
+                //                     >
+                //                         Home
+                //                     </Button>
+                //                     <Button
 
-                                            <BrandInstagram
-                                                size={iconSize}
-                                                strokeWidth={2}
-                                                color={colorChange}
-                                            />
+                //                         variant={isPhoneSize(matches, isInViewAbout, isInViewEmployment)}
+                //                         // color={colorScheme === "dark" ? "gray" : "dark"}
+                //                         color={colorScheme === "dark" ? "gray" : "dark"}
+                //                         onClick={() => {
+                //                             scrollAbout();
+                //                             setOpened(false)
+                //                             // navigate('/about')
 
-                                        </ActionIcon>
-                                    </Anchor>
-                                    <Anchor href="https://www.linkedin.com/in/andy-wong-3378ab1b9/?original_referer=" target="_blank">
-                                        <ActionIcon variant="subtle" >
-                                            <BrandLinkedin
-                                                size={iconSize}
-                                                strokeWidth={2}
-                                                color={colorChange}
-                                            />
-                                        </ActionIcon>
-                                    </Anchor>
-                                    <Anchor href='https://github.com/wonghin' target="_blank">
+                //                         }}
+                //                     >
+                //                         About
+                //                     </Button>
+                //                     <Button
+                //                         variant={isPhoneSize(matches, isInViewEmployment, isInViewEducation)}
+                //                         color={colorScheme === "dark" ? "gray" : "dark"}
+                //                         onClick={() => {
+                //                             scrollIntoView();
+                //                             setOpened(false)
+                //                             // navigate('/employment')
 
-                                        <ActionIcon variant='subtle'>
-                                            <BrandGithub
-                                                size={iconSize}
-                                                strokeWidth={2}
-                                                color={colorChange}
-                                            />
-                                        </ActionIcon>
-                                    </Anchor>
+                //                         }}
+                //                     >
+                //                         Employment
+                //                     </Button>
+                //                     <Button
+                //                         variant={matches ? (isInViewEducation ? 'filled' : 'outline') : 'outline'}
+                //                         color={colorScheme === "dark" ? "gray" : "dark"}
+                //                         onClick={() => {
+                //                             scrollIntoView2();
+                //                             setOpened(false)
+                //                             // navigate('/education')
 
-                                </Flex>
-                            </Stack>
-                        </Navbar.Section>
+                //                         }}
+                //                     >
+                //                         Education
+                //                     </Button>
+                //                 </Stack>
+                //                 {/* <Stack>
+                //                 <Button
+                //                     variant={matches ? (isInViewEducation ? 'filled' : 'outline') : 'outline'}
+                //                     color={colorScheme === "dark" ? "gray" : "dark"}
+                //                     onClick={() => {
+                //                         scrollIntoView2();
+                //                         setOpened(false)
+                //                         navigate('/education')
 
-                        <Navbar.Section grow component={ScrollArea}>
-                            <Stack
-                                mx={"md"}
+                //                     }}
+                //                 >
+                //                     Education
+                //                 </Button>
+                //             </Stack> */}
 
-                            >
-                                <Stack>
-                                    <Button
-                                        variant={(isPhoneSize(matches, isInViewHome, isInViewAbout))}
-                                        color={colorScheme === "dark" ? "gray" : "dark"}
-                                        onClick={() => {
-                                            scrollIntoView3();
-                                            setOpened(false)
-                                            // navigate('/home')
-                                        }}
-                                    >
-                                        Home
-                                    </Button>
-                                    <Button
+                //             </Stack>
+                //         </Navbar.Section>
 
-                                        variant={isPhoneSize(matches, isInViewAbout, isInViewEmployment)}
-                                        // color={colorScheme === "dark" ? "gray" : "dark"}
-                                        color={colorScheme === "dark" ? "gray" : "dark"}
-                                        onClick={() => {
-                                            scrollAbout();
-                                            setOpened(false)
-                                            // navigate('/about')
+                //     </ScrollArea>
 
-                                        }}
-                                    >
-                                        About
-                                    </Button>
-                                    <Button
-                                        variant={isPhoneSize(matches, isInViewEmployment, isInViewEducation)}
-                                        color={colorScheme === "dark" ? "gray" : "dark"}
-                                        onClick={() => {
-                                            scrollIntoView();
-                                            setOpened(false)
-                                            // navigate('/employment')
-
-                                        }}
-                                    >
-                                        Employment
-                                    </Button>
-                                    <Button
-                                        variant={matches ? (isInViewEducation ? 'filled' : 'outline') : 'outline'}
-                                        color={colorScheme === "dark" ? "gray" : "dark"}
-                                        onClick={() => {
-                                            scrollIntoView2();
-                                            setOpened(false)
-                                            // navigate('/education')
-
-                                        }}
-                                    >
-                                        Education
-                                    </Button>
-                                </Stack>
-                                {/* <Stack>
-                                <Button
-                                    variant={matches ? (isInViewEducation ? 'filled' : 'outline') : 'outline'}
-                                    color={colorScheme === "dark" ? "gray" : "dark"}
-                                    onClick={() => {
-                                        scrollIntoView2();
-                                        setOpened(false)
-                                        navigate('/education')
-
-                                    }}
-                                >
-                                    Education
-                                </Button>
-                            </Stack> */}
-
-                            </Stack>
-                        </Navbar.Section>
-
-                    </ScrollArea>
-
-                    <Navbar.Section mb={60}>
-                        <Stack align={"center"} spacing="xs">
-                            <Text size={13}>
-                                &copy; {new Date().getFullYear()} Copyright{' '}  by Andy Wong
-                            </Text>
-                        </Stack>
-                    </Navbar.Section>
+                //     <Navbar.Section mb={60}>
+                //         <Stack align={"center"} spacing="xs">
+                //             <Text size={13}>
+                //                 &copy; {new Date().getFullYear()} Copyright{' '}  by Andy Wong
+                //             </Text>
+                //         </Stack>
+                //     </Navbar.Section>
 
 
-                </Navbar>
+                // </Navbar>
             }
             header={
-                <Header height={{ base: 60 }} p="md">
-                    <Group position="apart" align={"center"}>
-                        <Group>
-                            <MediaQuery largerThan="sm" styles={{ display: "none" }}>
-                                <Burger
-                                    opened={opened}
-                                    onClick={() => setOpened((o) => !o)}
-                                    size="sm"
-                                    color={theme.colors.gray[6]}
-                                    mr="xl"
-                                />
-                            </MediaQuery>
-                        </Group>
-                        <Group w={50} h={30}>
-                            <Switch
-                                onLabel={<IconSun size="1.1rem" />}
-                                offLabel={<IconMoonStars size="1.1rem" />}
-                                onClick={() => toggleColorScheme()}
-                            />
-                        </Group>
-                    </Group>
-                </Header>
+                <HeaderComponent opened={opened} setOpened={setOpened} colorScheme={colorScheme} toggleColorScheme={toggleColorScheme} />
+                // <Header height={{ base: 60 }} p="md">
+                //     <Group position="apart" align={"center"}>
+                //         <Group>
+                //             <MediaQuery largerThan="sm" styles={{ display: "none" }}>
+                //                 <Burger
+                //                     opened={opened}
+                //                     onClick={() => setOpened((o) => !o)}
+                //                     size="sm"
+                //                     color={theme.colors.gray[6]}
+                //                     mr="xl"
+                //                 />
+                //             </MediaQuery>
+                //         </Group>
+                //         <Group w={50} h={30}>
+                //             <Switch
+                //                 checked={colorScheme === 'dark' ? true : false}
+                //                 onLabel={<IconSun size="1.1rem" />}
+                //                 offLabel={<IconMoonStars size="1.1rem" />}
+                //                 onClick={() => toggleColorScheme()}
+                //             />
+                //         </Group>
+                //     </Group>
+                // </Header>
+
             }
+
 
         >
             <Content2 targetRef={props} />

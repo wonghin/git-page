@@ -9,7 +9,7 @@
     border: 0.6vw solid white;
     cursor: pointer;
     overflow: hidden;
-    touch-action: none;
+    /* touch-action: none; */
 }
 
 .card:hover {
@@ -40,7 +40,6 @@
     border: 0.6vw solid white;
     cursor: pointer;
     overflow: hidden;
-    touch-action: none;
 }
 
 .phoneSizeCard:hover {

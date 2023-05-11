@@ -1,8 +1,5 @@
-import { Title, Grid, Space, Text, Stack, Box, useMantineTheme, Group } from '@mantine/core'
+import { Title, Space, Stack, Group } from '@mantine/core'
 import React from 'react'
-import HoverSpringMotion from '../components/HoverSpringMotion/HoverSpringMotion'
-import { ImageModal } from '../components/ImageModal'
-import { useDisclosure, useMediaQuery } from '@mantine/hooks'
 import { TimeLine } from '../components/TimeLIine'
 
 export const Employment = () => {

@@ -1,10 +1,15 @@
-import { Content1 } from "./screens/Contents/Content1";
+import { useLocalStorage } from "@mantine/hooks";
 import LayoutScreen from "./screens/Layout";
 import { MantineProvider, ColorSchemeProvider } from "@mantine/core";
-import { useEffect, useState } from "react";
+import { Todo } from "./screens/Todo";
 
 function App() {
-  const [colorScheme, setColorScheme] = useState("light");
+  const [colorScheme, setColorScheme] = useLocalStorage({
+    key: "mantine-color-scheme",
+    defaultValue: "light",
+    getInitialValueInEffect: true,
+  });
+  // const [colorScheme, setColorScheme] = useState("light");
   const toggleColorScheme = (value) =>
     setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));
 

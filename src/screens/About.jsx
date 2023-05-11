@@ -20,6 +20,7 @@ const Image = ({ openArray, index }) => {
 
 export const About = () => {
     // const targetRef = useRefStore()
+
     const theme = useMantineTheme()
     const matches = useMediaQuery(`(min-width: ${theme.breakpoints.lg}px)`);
     const open1 = useDisclosure(false)
@@ -31,29 +32,27 @@ export const About = () => {
     const openArray = [open1, open2, open3, open4]
 
     return (
-        <>
-            <Grid align={'center'} gutter="xs">
-                <Grid.Col lg={12}>
-                    <Title fz={50} sx={{ alignSelf: 'flex-end' }}> About</Title>
-                </Grid.Col>
-                {
-                    Array.from(Array(4)).map((_, index) =>
+        <Grid align={'center'} gutter="xs" >
+            <Grid.Col lg={12}>
+                <Title fz={50} sx={{ alignSelf: 'flex-end' }}> About</Title>
+            </Grid.Col>
+            {
+                Array.from(Array(4)).map((_, index) =>
 
-                        <Grid.Col key={index} lg={6} sm={6} >
-                            {
-                                matches ?
-                                    <ScrollFadeIn >
-                                        <Image openArray={openArray} index={index} />
-                                    </ScrollFadeIn>
-                                    : <ScrollFadeLeft>
-                                        <Image openArray={openArray} index={index} />
-                                    </ScrollFadeLeft>
+                    <Grid.Col key={index} lg={6} sm={6}>
+                        {
+                            matches ?
+                                <ScrollFadeIn >
+                                    <Image openArray={openArray} index={index} />
+                                </ScrollFadeIn>
+                                : <ScrollFadeLeft>
+                                    <Image openArray={openArray} index={index} />
+                                </ScrollFadeLeft>
 
-                            }
-                        </Grid.Col>
-                    )
-                }
-            </Grid>
-        </>
+                        }
+                    </Grid.Col>
+                )
+            }
+        </Grid>
     )
 }

@@ -1,7 +1,7 @@
 import { Title } from '@mantine/core'
 import React from 'react'
 import { ScrollFadeIn } from '../components/Animated/ScrollFadeIn'
-import { TaskCard, hkust, itBootCamp } from '../components/TaskCard'
+import { TaskCard, hkust } from '../components/TaskCard'
 
 export const Education = () => {
     return (

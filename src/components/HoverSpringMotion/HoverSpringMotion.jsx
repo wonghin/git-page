@@ -6,6 +6,8 @@ import imgs from './data'
 import styles from './styles.module.css'
 import { Box, Card, useMantineColorScheme, useMantineTheme } from '@mantine/core'
 import { useMediaQuery } from '@mantine/hooks'
+import { useOs } from '@mantine/hooks';
+
 
 const calcX = (y, ly) => -(y - ly - window.innerHeight / 2) / 20
 const calcY = (x, lx) => (x - lx - window.innerWidth / 2) / 20
@@ -16,6 +18,7 @@ const wheel = (y) => {
 }
 
 export default function HoverSpringMotion({ image, open }) {
+    const os = useOs();
     const theme = useMantineTheme();
     const matches = useMediaQuery(`(min-width: ${theme.breakpoints.sm}px)`);
 
@@ -69,13 +72,16 @@ export default function HoverSpringMotion({ image, open }) {
             alignItems: 'center',
             height: '100%',
             justifyContent: 'center',
-        }}>
+            // pointerEvents: matches ? 'auto' : 'none',
+            userSelect: 'none',
+
+        }}  >
 
             <animated.div
                 ref={domTarget}
                 className={matches ? styles.card : styles.phoneSizeCard}
 
-                style={matches ? {
+                style={(matches && os != 'ios' && os !== 'android') ? {
                     transform: 'perspective(100vw)',
                     x,
                     y,

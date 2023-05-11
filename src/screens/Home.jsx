@@ -1,4 +1,4 @@
-import { Title, Grid, Space, Text, Stack, Box, useMantineTheme } from '@mantine/core'
+import { Title, Grid, Space, Text, useMantineTheme } from '@mantine/core'
 import React from 'react'
 import HoverSpringMotion from '../components/HoverSpringMotion/HoverSpringMotion'
 import { ImageModal } from '../components/ImageModal'

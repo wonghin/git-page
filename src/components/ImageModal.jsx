@@ -1,7 +1,8 @@
-import { useDisclosure, useMediaQuery } from '@mantine/hooks';
-import { Modal, Button, Group, Image, Box, useMantineTheme, Stack, Grid, Text, Paper, Card } from '@mantine/core';
+import { useMediaQuery } from '@mantine/hooks';
+import { Modal, Image, useMantineTheme, Stack, Grid, Text } from '@mantine/core';
 
 import ReactImageMagnify from 'react-image-magnify';
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
 export function ImageModal({ opened, open, close, image, index }) {
     const theme = useMantineTheme();
@@ -28,7 +29,12 @@ export function ImageModal({ opened, open, close, image, index }) {
                                     }
                                 }} />
                                 :
-                                <Image src={image} alt='cat1' />
+                                <TransformWrapper>
+                                    <TransformComponent>
+                                        <Image src={image} alt='cat1' withPlaceholder />
+                                    </TransformComponent>
+                                </TransformWrapper>
+
 
                         }
                     </Grid.Col>
