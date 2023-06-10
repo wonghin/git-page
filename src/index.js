@@ -11,27 +11,27 @@ import { Education } from "./screens/Education";
 
 const router = createBrowserRouter([
   {
-    path: "/git-page",
+    path: "/",
     element: <App />,
     errorElement: <ErrorPage />,
-    children: [
-      {
-        path: "home",
-        element: <Home />,
-      },
-      {
-        path: "about",
-        element: <About />,
-      },
-      {
-        path: "employment",
-        element: <Employment />,
-      },
-      {
-        path: "education",
-        element: <Education />,
-      },
-    ],
+    // children: [
+    //   {
+    //     path: "home",
+    //     element: <Home />,
+    //   },
+    //   {
+    //     path: "about",
+    //     element: <About />,
+    //   },
+    //   {
+    //     path: "employment",
+    //     element: <Employment />,
+    //   },
+    //   {
+    //     path: "education",
+    //     element: <Education />,
+    //   },
+    // ],
   },
 ]);
 

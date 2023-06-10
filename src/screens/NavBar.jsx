@@ -14,6 +14,7 @@ import {
 
 import icon from "../assets/icon.jpg";
 import { useSpring } from '@react-spring/web';
+import { useNavigate } from 'react-router-dom';
 
 const isPhoneSize = (matches, a, b) => {
     const isVarient = (a, b) => {
@@ -84,7 +85,8 @@ export const NavBar = ({ opened, smMatches, handlers, colorScheme, iconSize, mat
   0%   {background-color: black;}
  
   100% {background-color: white;}
-`;
+`
+    const navigate = useNavigate()
 
     return (
         <Navbar
@@ -186,6 +188,7 @@ export const NavBar = ({ opened, smMatches, handlers, colorScheme, iconSize, mat
                                 onClick={() => {
                                     scrollIntoView2();
                                     setOpened(false)
+                                    // navigate('/education')
 
                                 }}
                             >

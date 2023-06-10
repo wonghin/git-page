@@ -39,7 +39,7 @@ import {
 import icon from "../assets/icon.jpg";
 import { Content2 } from "./Contents/Content2";
 import { useScrollLock } from '@mantine/hooks';
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { create } from "zustand";
 import { useInView } from "framer-motion";
 import { ImageModal } from "../components/ImageModal";
@@ -116,9 +116,23 @@ export default function LayoutScreen() {
             // asideOffsetBreakpoint="sm"
             // layout="alt"
             navbar={
-                <NavBar opened={opened} smMatches={smMatches} handlers={handlers} colorScheme={colorScheme} iconSize={iconSize} matches={matches}
-                    isInViewHome={isInViewHome} isInViewAbout={isInViewAbout} scrollIntoView3={scrollIntoView3} setOpened={setOpened} scrollAbout={scrollAbout}
-                    isInViewEmployment={isInViewEmployment} colorChange={colorChange} isInViewEducation={isInViewEducation} scrollIntoView={scrollIntoView} scrollIntoView2={scrollIntoView2} />
+                <NavBar
+                    opened={opened}
+                    smMatches={smMatches}
+                    handlers={handlers}
+                    colorScheme={colorScheme}
+                    iconSize={iconSize}
+                    matches={matches}
+                    isInViewHome={isInViewHome}
+                    isInViewAbout={isInViewAbout}
+                    scrollIntoView3={scrollIntoView3}
+                    setOpened={setOpened}
+                    scrollAbout={scrollAbout}
+                    isInViewEmployment={isInViewEmployment}
+                    colorChange={colorChange}
+                    isInViewEducation={isInViewEducation}
+                    scrollIntoView={scrollIntoView}
+                    scrollIntoView2={scrollIntoView2} />
                 // <Navbar
                 //     hiddenBreakpoint="sm"
                 //     hidden={!opened}
@@ -287,6 +301,7 @@ export default function LayoutScreen() {
 
         >
             <Content2 targetRef={props} />
+            <Outlet />
         </AppShell>
     );
 }
